@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // Criar o CSS para a Navbar
+import "./Navbar.css";
 
 const Navbar = () => {
   const maps = [

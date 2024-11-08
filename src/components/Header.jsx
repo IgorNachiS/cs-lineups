@@ -6,6 +6,8 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
+        {/* Referência à imagem do ícone */}
+        <img src="/images/cs-icon.png" alt="CS Icon" className="logo-icon" />
         <h1>Counter Strike Lineups</h1>
       </div>
       <nav className="nav">

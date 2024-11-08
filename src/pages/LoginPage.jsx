@@ -16,9 +16,7 @@ const LoginPage = () => {
             <label htmlFor="password">Senha</label>
             <input type="password" id="password" placeholder="Digite sua senha" />
           </div>
-          <button type="submit" className="submit-btn">
-            Entrar
-          </button>
+          <button type="submit" className="submit-btn">Entrar</button>
         </form>
         <Link to="/" className="back-btn">Voltar para a página inicial</Link>
       </div>

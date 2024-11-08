@@ -1,36 +1,36 @@
-/* Header */
+/* Header.css */
+
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #2c3e50;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header .logo h1 {
-    font-size: 2rem;
-    font-family: 'Roboto', sans-serif;
-    color: #ecf0f1; /* Substitua com a cor de sua preferência */
-  }
-  
-  
-  .nav {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-link {
-    color: white;
-    font-size: 1.2rem;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    background-color: #34495e;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 40px; /* Ajuste o tamanho do ícone conforme necessário */
+  height: auto;
+  margin-right: 10px;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  color: #f1f1f1;
+}
