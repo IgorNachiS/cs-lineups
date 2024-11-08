@@ -1,0 +1,73 @@
+.map-page {
+    padding: 50px 20px;
+    background-color: #fafafa;
+    text-align: center;
+  }
+  
+  .map-page h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  /* Estilos do botão de voltar */
+  .back-btn-container {
+    margin-bottom: 30px;
+  }
+  
+  .back-btn {
+    padding: 12px 20px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+  
+  .back-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  /* Container das lineups */
+  .lineups-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .lineup-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .lineup-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .lineup-img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .lineup-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
