@@ -10,7 +10,7 @@ const LoginPage = () => {
         <form className="login-form">
           <div className="form-group">
             <label htmlFor="username">Usuário</label>
-            <input type="text" id="username" placeholder="Digite seu nome" />
+            <input type="text" id="username" placeholder="Digite seu nome de usuário" />
           </div>
           <div className="form-group">
             <label htmlFor="password">Senha</label>
@@ -18,7 +18,7 @@ const LoginPage = () => {
           </div>
           <button type="submit" className="submit-btn">Entrar</button>
         </form>
-        <Link to="/" className="back-btn">Voltar para a página inicial</Link>
+        <Link to="/register" className="register-link">Não tem uma conta? Cadastre-se</Link>
       </div>
     </div>
   );

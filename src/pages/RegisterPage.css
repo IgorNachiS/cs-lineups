@@ -1,6 +1,4 @@
-/* LoginPage.css */
-
-.login-page {
+.register-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +6,7 @@
   background-color: #1e1e1e;
 }
 
-.login-form-container {
+.register-form-container {
   background: #2a2a2a;
   padding: 20px;
   border-radius: 8px;
@@ -17,7 +15,7 @@
   color: #fff;
 }
 
-.login-form-container h2 {
+.register-form h2 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -29,7 +27,6 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #ccc;
 }
 
 .form-group input {
@@ -41,10 +38,6 @@
   color: #fff;
 }
 
-.form-group input::placeholder {
-  color: #888;
-}
-
 .submit-btn {
   width: 100%;
   padding: 10px;
@@ -53,19 +46,16 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
 }
 
 .submit-btn:hover {
   background-color: #ffcc00;
-  
 }
 
-.register-link {
+.back-btn {
   display: block;
-  margin-top: 15px;
+  margin-top: 10px;
   text-align: center;
   color: #ffcc00;
   text-decoration: none;
 }
-
