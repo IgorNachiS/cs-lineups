@@ -1,14 +1,18 @@
+
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (!isAuthenticated) return <Navigate to="/login" />;
+  if (!isAuthenticated) {
+    // Redireciona para a página de login se o usuário não estiver autenticado
+    loginWithRedirect();
+    return null; // Enquanto redireciona, não renderiza nada
+  }
 
-  return children;
+  return children; // Renderiza o componente filho se o usuário estiver autenticado
 };
 
 export default ProtectedRoute;

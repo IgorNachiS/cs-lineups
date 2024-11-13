@@ -1,3 +1,4 @@
+// Header.js
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -9,8 +10,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
+        {/* Usando o novo ícone de CS */}
         <img src="/images/cs-icon.png" alt="CS Icon" className="logo-icon" />
-        <h1>Counter Strike Lineups</h1>
+        <h1>CS Lineups</h1>
       </div>
       <nav className="nav">
         <Link to="/" className="nav-link">Início</Link>
@@ -21,7 +23,7 @@ const Header = () => {
               onClick={() =>
                 logout({ returnTo: window.location.origin })
               }
-              className="nav-link"
+              className="nav-link login-btn"
             >
               Sair
             </button>

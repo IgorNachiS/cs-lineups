@@ -28,15 +28,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            {/* Usando o ProtectedRoute para proteger o acesso ao MapPage */}
-            <Route
-              path="/map/:mapId"
-              element={
-                <ProtectedRoute>
-                  <MapPage />
-                </ProtectedRoute>
-              }
-            />
+
+            <Route path="/map/:mapId" element={<MapPage />} />
           </Routes>
         </div>
       </Router>

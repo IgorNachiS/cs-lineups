@@ -50,17 +50,20 @@
   color: #ffcc00; /* Cor do texto ao clicar */
 }
 
-/* Estilo específico para o botão de Login (sem fundo branco) */
-.nav-link.login-btn {
+/* Estilo específico para os botões de Login e Sair (sem fundo branco) */
+.nav-link.login-btn,
+.nav-link.logout-btn {
   background-color: transparent; /* Garante que o fundo seja transparente */
   border: none; /* Remove qualquer borda aplicada */
 }
 
-.nav-link.login-btn:hover {
+.nav-link.login-btn:hover,
+.nav-link.logout-btn:hover {
   color: #ffcc00; /* Cor do texto ao passar o mouse */
   background-color: transparent; /* Mantém o fundo transparente */
 }
 
-.nav-link.login-btn:active {
+.nav-link.login-btn:active,
+.nav-link.logout-btn:active {
   color: #ffcc00; /* Cor do texto ao clicar */
 }
