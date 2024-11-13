@@ -1,36 +1,66 @@
-/* Header.css */
-
+/* Header Principal */
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #333;
+  justify-content: space-between; /* Espaço entre logo e navegação */
+  align-items: center; /* Alinha os itens verticalmente */
+  padding: 15px 30px; /* Ajuste o padding conforme necessário */
+  background-color: #333; /* Cor de fundo do cabeçalho */
   color: white;
 }
 
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Alinha o logo à esquerda */
+  gap: 10px; /* Espaço entre o ícone e o nome */
 }
 
 .logo-icon {
   width: 40px; /* Ajuste o tamanho do ícone conforme necessário */
   height: auto;
-  margin-right: 10px;
 }
 
+/* Navegação */
 .nav {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Espaço entre os links */
+  justify-content: flex-end; /* Alinha os links à direita */
+  align-items: center; /* Alinha verticalmente os links */
 }
 
+/* Links de Navegação */
 .nav-link {
   color: white;
-  text-decoration: none;
+  text-decoration: none; /* Remove o sublinhado */
   font-size: 16px;
+  padding: 10px 15px; /* Padding para deixar os links mais clicáveis */
+  border-radius: 4px; /* Borda arredondada */
+  transition: color 0.3s ease; /* Transição suave de cor */
 }
 
+/* Efeito ao passar o mouse */
 .nav-link:hover {
-  color: #f1f1f1;
+  color: #ffcc00; /* Cor do texto ao passar o mouse */
+  background-color: transparent; /* Sem fundo no hover */
+}
+
+/* Efeito ao clicar */
+.nav-link:active {
+  color: #ffcc00; /* Cor do texto ao clicar */
+}
+
+/* Estilo específico para o botão de Login (sem fundo branco) */
+.nav-link.login-btn {
+  background-color: transparent; /* Garante que o fundo seja transparente */
+  border: none; /* Remove qualquer borda aplicada */
+}
+
+.nav-link.login-btn:hover {
+  color: #ffcc00; /* Cor do texto ao passar o mouse */
+  background-color: transparent; /* Mantém o fundo transparente */
+}
+
+.nav-link.login-btn:active {
+  color: #ffcc00; /* Cor do texto ao clicar */
 }
