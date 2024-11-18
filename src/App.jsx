@@ -6,7 +6,8 @@ import MapPage from "./pages/MapPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Header from "./components/Header";
-import ProtectedRoute from "./components/ProtectedRoute";
+import FavoritesPage from "./pages/FavoritesPage"; // Página de favoritos
+import ProtectedRoute from "./components/ProtectedRoute"; // Protege a página de favoritos, se necessário
 import "./index.css";
 
 function App() {
@@ -28,8 +29,16 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-
             <Route path="/map/:mapId" element={<MapPage />} />
+            {/* Rota para favoritos, protegendo se necessário */}
+            <Route
+              path="/favorites"
+              element={
+                <ProtectedRoute>
+                  <FavoritesPage />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </Router>

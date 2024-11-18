@@ -1,42 +1,69 @@
-import React, { useState } from "react";
-import "./FeedbackForm.css";
+import React, { useState } from 'react';
+import { db } from './firebase';  // Certifique-se de que o caminho está correto para o arquivo firebase.js
+import { collection, addDoc } from 'firebase/firestore';
+import './FeedbackForm.css'; // Se tiver um arquivo de CSS para o estilo
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ mapId }) => {
+  const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
 
-  const handleSubmit = (e) => {
+  // Função para lidar com o envio do feedback
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Feedback enviado! Avaliação: ${rating}, Comentário: ${comment}`);
-    // Aqui você pode implementar a lógica para enviar o feedback para um servidor ou banco de dados
+    e.stopPropagation(); // Evita fechar o card ao submeter o formulário
+
+    // Verifique se o 'mapId' está definido antes de tentar enviá-lo
+    if (!mapId) {
+      console.error("Erro: O 'mapId' não foi fornecido.");
+      alert("Erro: Map ID não fornecido.");
+      return;
+    }
+
+    try {
+      const feedbackCollection = collection(db, 'feedback');
+      await addDoc(feedbackCollection, {
+        mapId,  // Usando o mapId para associar o feedback
+        comment,
+        rating,
+        timestamp: new Date(),
+      });
+
+      console.log("Feedback enviado com sucesso!");
+      alert("Obrigado pelo feedback!");
+      setComment('');
+      setRating(0);
+    } catch (error) {
+      console.error("Erro ao enviar feedback: ", error);
+      alert("Erro ao enviar o feedback.");
+    }
   };
 
   return (
-    <form className="feedback-form" onSubmit={handleSubmit}>
-      <div className="feedback-rating">
-        <label>Avaliação: </label>
-        <select
+    <form
+      className="feedback-form"
+      onSubmit={handleSubmit}
+      onClick={(e) => e.stopPropagation()} // Evita fechar o card ao clicar no formulário
+    >
+      <h4>Avalie o Mapa: {mapId}</h4>
+      <div>
+        <label>Nota:</label>
+        <input
+          type="number"
           value={rating}
+          min="1"
+          max="5"
           onChange={(e) => setRating(e.target.value)}
-          required
-        >
-          <option value={0}>Selecione uma avaliação</option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-        </select>
+        />
       </div>
-      <div className="feedback-comment">
-        <label>Comentário: </label>
+      <div>
+        <label>Comentário:</label>
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          required
-        ></textarea>
+          placeholder="Deixe seu comentário aqui"
+        />
       </div>
-      <button type="submit">Enviar Feedback</button>
+      <button type="submit">Enviar Avaliação</button>
     </form>
   );
 };

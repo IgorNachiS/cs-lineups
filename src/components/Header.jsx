@@ -1,4 +1,3 @@
-// Header.js
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -16,13 +15,14 @@ const Header = () => {
       </div>
       <nav className="nav">
         <Link to="/" className="nav-link">Início</Link>
+        {isAuthenticated && (
+          <Link to="/favorites" className="nav-link">Favoritos</Link> // Link para a página de favoritos
+        )}
         {isAuthenticated ? (
           <>
             <span className="nav-link">Olá, {user.name}</span>
             <button
-              onClick={() =>
-                logout({ returnTo: window.location.origin })
-              }
+              onClick={() => logout({ returnTo: window.location.origin })}
               className="nav-link login-btn"
             >
               Sair
