@@ -43,7 +43,13 @@ const MapPage = () => {
     { name: "Smoke CAT (TR)", video: "https://www.youtube.com/embed/A5Sx0YVgHGE" },
   ];
 
-  // Função para retornar lineups com base no mapa
+  const overpassLineups = [
+    { name: "Smoke para o céu da água do cimento (TR)", video: "https://www.youtube.com/embed/ME6WA9GQP6o" },
+    { name: "Smoke para a lixeira da Rua (TR)", video: "https://www.youtube.com/embed/c_T1glAvjSU" },
+    { name: "Smoke Passagem bomb B da base TR (TR)", video: "https://www.youtube.com/embed/0wBlHwWBVU0" },
+    { name: "Smoke Sapão CT (CT)", video: "https://www.youtube.com/embed/mSDbR4vZ8n0" },
+  ];
+
   const getLineupsByMap = (mapId) => {
     switch (mapId.toLowerCase()) {
       case "mirage":
@@ -54,60 +60,58 @@ const MapPage = () => {
         return infernoLineups;
       case "nuke":
         return nukeLineups;
+      case "overpass":
+        return overpassLineups;
       default:
         return [];
     }
   };
 
-  // Obtendo lineups para o mapa atual
   const lineups = getLineupsByMap(mapId);
 
-  // Função que lida com o clique no card
   const handleLineupClick = (lineup) => {
     if (expandedLineup === lineup.name) {
-      setExpandedLineup(null); // Fecha o card expandido
+      setExpandedLineup(null);
     } else {
-      setExpandedLineup(lineup.name); // Expande o card
-      setSelectedLineup(lineup); // Define a lineup selecionada
+      setExpandedLineup(lineup.name);
+      setSelectedLineup(lineup);
     }
   };
 
-  // Função para lidar com o clique no botão de favoritar
   const handleFavoriteClick = async (lineup) => {
     if (!isAuthenticated) {
-      navigate("/login"); // Redireciona para a página de login se não estiver autenticado
+      navigate("/login");
       return;
     }
 
     const userId = user.sub;
 
     try {
-      const userRef = doc(db, "users", userId); // Referência ao documento do usuário no Firestore
+      const userRef = doc(db, "users", userId);
       const userDoc = await getDoc(userRef);
 
       if (userDoc.exists()) {
         const currentFavorites = userDoc.data().favorites || [];
-        const isFavorite = currentFavorites.some(fav => fav.name === lineup.name);
+        const isFavorite = currentFavorites.some((fav) => fav.name === lineup.name);
 
         if (isFavorite) {
-          // Remover o favorito se já estiver favoritado
           await updateDoc(userRef, {
             favorites: arrayRemove(lineup),
           });
-          setFavorites(prevFavorites => prevFavorites.filter(fav => fav.name !== lineup.name)); // Atualiza localmente
+          setFavorites((prevFavorites) =>
+            prevFavorites.filter((fav) => fav.name !== lineup.name)
+          );
           alert(`Lineup ${lineup.name} foi removida dos favoritos.`);
         } else {
-          // Adicionar o favorito
           await updateDoc(userRef, {
             favorites: arrayUnion(lineup),
           });
-          setFavorites(prevFavorites => [...prevFavorites, lineup]); // Atualiza localmente
+          setFavorites((prevFavorites) => [...prevFavorites, lineup]);
           alert(`Lineup ${lineup.name} foi favoritada!`);
         }
       } else {
-        // Se o usuário não tem um documento, cria um novo
         await setDoc(userRef, {
-          favorites: [lineup], // Cria a lista de favoritos
+          favorites: [lineup],
         });
         alert(`Lineup ${lineup.name} foi favoritada!`);
       }
@@ -117,7 +121,6 @@ const MapPage = () => {
     }
   };
 
-  // Carrega os favoritos do Firestore ao carregar a página
   useEffect(() => {
     if (isAuthenticated) {
       const fetchFavorites = async () => {
@@ -153,9 +156,9 @@ const MapPage = () => {
                 e.stopPropagation();
                 handleFavoriteClick(lineup);
               }}
-              className={`favorite-btn ${favorites.some(fav => fav.name === lineup.name) ? "favorited" : ""}`}
+              className={`favorite-btn ${favorites.some((fav) => fav.name === lineup.name) ? "favorited" : ""}`}
             >
-              ⭐
+              {favorites.some((fav) => fav.name === lineup.name) ? "★" : "☆"}
             </button>
             {expandedLineup === lineup.name && (
               <div className="lineup-video-feedback">
@@ -168,7 +171,6 @@ const MapPage = () => {
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-                {/* Passando o mapId para o FeedbackForm */}
                 <FeedbackForm mapId={mapId} />
               </div>
             )}

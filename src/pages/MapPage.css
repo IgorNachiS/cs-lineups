@@ -37,28 +37,24 @@
   margin-bottom: 10px;
 }
 
-/* Botão de favoritar */
 .favorite-btn {
-  font-size: 1.5rem;
   margin-top: 10px;
-  background-color: #ccc;
+  background-color: transparent;
   border: none;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 50%;
+  font-size: 24px; /* Tamanho da estrela */
+  color: #ffcc00; /* Cor da estrela padrão */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.3s ease;
 }
 
-/* Estilo da estrela quando favoritada */
 .favorite-btn.favorited {
-  background-color: #ffcc00; /* Cor dourada para favoritado */
+  color: #ff9900; /* Cor da estrela favoritada */
+  transform: scale(1.2); /* Um pequeno zoom ao favoritar */
 }
 
-/* Hover do botão de favoritar */
 .favorite-btn:hover {
-  background-color: #ff9900;
-  transform: scale(1.1); /* Aumenta o tamanho quando passa o mouse */
+  color: #ffa500; /* Cor ao passar o mouse */
+  transform: scale(1.1); /* Animação de hover */
 }
 
 /* Se o vídeo e formulário de feedback */
