@@ -1,26 +1,21 @@
-// Importando as funções necessárias do Firebase SDK
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";  // Importando Firestore
-import { getAnalytics } from "firebase/analytics"; // Para Firebase Analytics (opcional)
+import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
-// Configuração do Firebase
+// Usando as variáveis de ambiente com o prefixo VITE_
 const firebaseConfig = {
-  apiKey: "AIzaSyCi9pG1Gb5dx9o3IECK77QRA522st7Cfp4",
-  authDomain: "cs-lineups-72d89.firebaseapp.com",
-  projectId: "cs-lineups-72d89",
-  storageBucket: "cs-lineups-72d89.firebasestorage.app",
-  messagingSenderId: "1065554620966",
-  appId: "1:1065554620966:web:6c222c37f532c8af226ce7",
-  measurementId: "G-MQ005JYHT6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Inicializando o Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const analytics = getAnalytics(app);
 
-// Inicializando o Firestore e Analytics (se necessário)
-const db = getFirestore(app);  // Firestore para banco de dados
-const analytics = getAnalytics(app);  // Analytics se necessário
-
-// Exportando o Firestore para ser usado no seu código
 export { db, analytics };
-

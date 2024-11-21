@@ -11,8 +11,9 @@ import ProtectedRoute from "./components/ProtectedRoute"; // Protege a página d
 import "./index.css";
 
 function App() {
-  const domain = "dev-mcpiks6xkdmxapjd.us.auth0.com";
-  const clientId = "Wu3m6RYdTqb8AowYWtB641OBGuKRRG3F";
+  // Usando as variáveis de ambiente com o prefixo VITE_
+  const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+  const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
   return (
     <Auth0Provider
